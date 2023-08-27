@@ -8,6 +8,7 @@ use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
 use App\Models\Type;
+use App\Models\Tecnology;
 class PostController extends Controller
 {
     /**
@@ -30,7 +31,8 @@ class PostController extends Controller
     public function create()
     {
         $types = Type::all();
-        return view('admin.posts.create', compact('types'));
+        $tecnologies = Tecnology::all();
+        return view('admin.posts.create', compact('types', 'tecnologies'));
     }
 
     /**
@@ -78,7 +80,8 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $types = Type::all();
-        return view('admin.posts.edit', compact('post', 'types'));
+        $tecnologies = Tecnology::all();
+        return view('admin.posts.edit', compact('post', 'types', 'tecnologies'));
     }
 
     /**
