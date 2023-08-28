@@ -56,7 +56,7 @@ class PostController extends Controller
         $slug = $post->generateSlug($form_data['title']);
         // dd($slug);
         $form_data['slug'] = $slug;
-        // per associare i dati del form agli atttributi di post 
+        // per associare i dati del form agli attributi di post 
         $post->fill($form_data);
         // salvo e reindirizzo
          $post->save();
@@ -110,7 +110,8 @@ class PostController extends Controller
         // aggiorno slug, ma non serve save 
         $form_data['slug'] = $post->generateSlug($form_data['title']);
         $post->update($form_data);
-        $post->tecnologies()->attach($request->tecnologies);
+        // sync per aggiornare eliminando i dati preced. selezionati
+        $post->tecnologies()->sync($request->tecnologies);
         return redirect()->route('admin.posts.show', $post->id);
     }
 

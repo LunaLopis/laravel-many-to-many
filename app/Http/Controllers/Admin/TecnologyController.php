@@ -98,9 +98,13 @@ class TecnologyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Tecnology $tecnology)
-    {
-        $tecnology->delete();
-            $message = 'Cancellazione tecnologia completata';
-            return redirect()->route('admin.tecnologies.index', ['message' => $message]);
+    {// Rimuovi le relazioni associate alla tecnologia dalla tabella post_tecnologies
+    $tecnology->posts()->detach();
+
+    // Ora puoi procedere con la cancellazione della tecnologia
+    $tecnology->delete();
+
+    $message = 'Cancellazione tecnologia completata';
+    return redirect()->route('admin.tecnologies.index', ['message' => $message]);
     }
 }
