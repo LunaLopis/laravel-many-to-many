@@ -34,5 +34,16 @@
            @endif
     </div>
    </div>
+
+   <a href="{{route('admin.posts.edit', $post->id)}}" class="btn btn-sm btn-warning">
+    <i class="fas fa-edit"></i>
+</a>
+{{-- la rotta dove entrare per cancellare l'id selezionato; destroy funztion, mentre delete è il metodo --}}
+<form action="{{ route('admin.posts.destroy', $post->id) }}" class="d-inline-block" method="POST" onsubmit="return confirm('sei sicuro di voler eliminare questo post?')">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash" data-post-title='{{$post->title}}'></i></button>
+</form>
+
 </div>
 @endsection

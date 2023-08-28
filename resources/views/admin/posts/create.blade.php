@@ -19,7 +19,7 @@
                 </ul>
             </div>
         @endif
-          <form action="{{ route('admin.posts.store')}}" method="POST">
+          <form action="{{ route('admin.posts.store')}}" method="POST" enctype="multipart/form-data">
             {{-- per provenienza richieste --}}
             @csrf
             <div class="form-group mt-4">
@@ -62,15 +62,6 @@
             </div>
             
 
-             {{-- <div class="form-group mt-4">
-                <label class="control-label">tecnologie</label>
-                <select  name="tecnology_id" id="tecnology_id" class="form-control @error('tecnology_id') is-invalid @enderror" placeholder="tecnology_id" value="{{ old('tecnology_id')}}">
-                    <option value="">seleziona tecnologia</option>
-                    @foreach($tecnologies as $tecnology)
-                       <option value="{{$tecnology->id}}">{{$tecnology->name}}</option>
-                    @endforeach
-                </select>
-             </div>  --}}
              @error('type_id')
              <div class="text-danger">{{ $message}}</div>
              @enderror
