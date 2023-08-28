@@ -2,10 +2,10 @@
 @section('content')
 <div class="container">
    <div class="row">
-    <div class="col-12 mt-5">
-        <h1>Dettagli tipo: {{ $type->name }}</h1>
-        <p>Slug: {{ $type->slug }}</p>
-    </div>
+    {{-- <div class="col-12 mt-5">
+        <h1>Dettagli tipo: {{ $tecnology->name }}</h1>
+        <p>Slug: {{ $tecnology->slug }}</p>
+    </div> --}}
     
     <div class="col-12 mt-5">
         <table class="table table-stripped">
@@ -18,7 +18,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($type->posts as $post)
+                @foreach($tecnology->posts as $post)
                     <tr>
                         <td>{{$post->id}}</td>
                         <td>{{$post->title}}</td>

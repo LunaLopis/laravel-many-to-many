@@ -12,7 +12,7 @@ class Tecnology extends Model
     use HasFactory;
     protected $fillable = ['name', 'slug'];
     public function posts(){
-        return $this->belongsToMany(Post::class);
+        return $this->belongsToMany(Post::class, 'post_tecnologies');
     }
     public static function generateSlug($name){
         return Str::slug($name, '-');
