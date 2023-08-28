@@ -57,6 +57,8 @@ class PostController extends Controller
         $post->fill($form_data);
         // salvo e reindirizzo
          $post->save();
+         $post->tecnologies()->attach($request->tecnologies);
+         
         return redirect()->route('admin.posts.show', $post->id );
     }
 
@@ -81,6 +83,7 @@ class PostController extends Controller
     {
         $types = Type::all();
         $tecnologies = Tecnology::all();
+        
         return view('admin.posts.edit', compact('post', 'types', 'tecnologies'));
     }
 
@@ -104,6 +107,7 @@ class PostController extends Controller
         // aggiorno slug, ma non serve save 
         $form_data['slug'] = $post->generateSlug($form_data['title']);
         $post->update($form_data);
+        $post->tecnologies()->attach($request->tecnologies);
         return redirect()->route('admin.posts.show', $post->id);
     }
 
@@ -115,6 +119,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        $post->tecnologies()->detach();
         // copio per eliminare il file dal progetto
         if($post->cover_image){
             Storage::delete($post->cover_image);

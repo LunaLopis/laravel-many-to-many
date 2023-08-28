@@ -18,6 +18,20 @@
            @else
                <p> nessuna categoria selezionata</p>
            @endif 
+           @if($post->tecnologies->count() > 0)
+
+           <p> Tecnologie associate:</p>
+           <ul>
+               @foreach($post->tecnologies as $tecnology)
+                   <li>{{ $tecnology->name }}</li>
+               @endforeach
+           </ul>
+
+           @else
+
+               <p> Nessuna tecnologia selezionata</p>
+
+           @endif
     </div>
    </div>
 </div>

@@ -18,4 +18,9 @@ class Post extends Model
     {
         return Str::slug($title, '-');
     }
+    public function tecnologies()
+{
+    return $this->belongsToMany(Tecnology::class, 'post_tecnologies');
+}
+
 }

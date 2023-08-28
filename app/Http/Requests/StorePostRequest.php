@@ -26,6 +26,7 @@ class StorePostRequest extends FormRequest
         return [
             'title' => 'required|max:50',
             'type_id' => 'required|exists:types,id',
+            'tecnology_id' => 'exists:tecnology,id',
         ];
     }
 
@@ -35,7 +36,7 @@ class StorePostRequest extends FormRequest
             'title.max' => 'il titolo deve essere lungo massimo :max caratteri',
              'type_id.required' => 'Devi selezionare una categoria',
              'type_id.exists' => 'categoria selezionata non valida',
-            
+             'tecnology_id.exists' => 'tecnologia selezionata non valida',
         ];
     }
 }

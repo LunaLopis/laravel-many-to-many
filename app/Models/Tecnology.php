@@ -11,8 +11,8 @@ class Tecnology extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'slug'];
-    public function tecnologies(){
-        return $this->belongsToMany(Tecnology::class);
+    public function posts(){
+        return $this->belongsToMany(Post::class);
     }
     public static function generateSlug($name){
         return Str::slug($name, '-');
